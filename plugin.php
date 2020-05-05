@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Bistro Blookkok
+ * Plugin Name: Etterem Blocks
  * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: Az Bistro sablonhoz készült egyedi blokkok.
+ * Description: Az Etterem sablonhoz készült egyedi, előregyártott blokkok.
  * Author: weart
  * Author URI: https://weart.hu
  * Version: 1.0.0
