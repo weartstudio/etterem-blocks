@@ -1,0 +1,43 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.weart-intro{
+	position: relative;
+	background-size: cover;
+	background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+
+	.weart-intro-overlay{
+		position: absolute;
+		left: 0; right: 0; top: 0; bottom: 0;
+	}
+	
+	.container{
+		position: relative;
+		z-index: 1;
+	}
+
+  // add button block
+    .block-list-appender{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span{ display: none;}
+      button{
+        border: 1px solid white;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        outline: none;
+      }
+    }
+  // end
+
+}
+
