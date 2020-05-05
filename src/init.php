@@ -1,12 +1,4 @@
 <?php
-/**
- * Blocks Initializer
- *
- * Enqueue CSS/JS of all the blocks.
- *
- * @since   1.0.0
- * @package CGB
- */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -88,3 +80,17 @@ function etterem_cgb_block_assets() { // phpcs:ignore
 
 // Hook: Block assets.
 add_action( 'init', 'etterem_cgb_block_assets' );
+
+
+function weart_create_block_category( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'weart',
+				'title' => __( 'Weart', 'etterem' ),
+			),
+		)
+	);
+}
+add_filter( 'block_categories', 'weart_create_block_category', 10, 2);
