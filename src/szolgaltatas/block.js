@@ -74,7 +74,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 
 		// functions
 		const onSelectImage = ( newItem ) => {
-			setAttributes( { sideImage: newItem.sizes.full.url } );
+			setAttributes( { image: newItem.sizes.full.url } );
 		};
 		const onChangeBg = ( newItem ) => {
 			setAttributes( { bg: newItem } );

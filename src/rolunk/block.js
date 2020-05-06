@@ -87,7 +87,7 @@ registerBlockType( 'etterem-blocks/rolunk', {
 			setAttributes( { title: newItem } );
 		};
 		const onChangeBody = ( newItem ) => {
-			setAttributes( { title: newItem } );
+			setAttributes( { body: newItem } );
 		};
 
 		// return
