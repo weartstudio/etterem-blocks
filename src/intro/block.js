@@ -1,7 +1,10 @@
+/* eslint-disable react/jsx-key */
+/*eslint linebreak-style: ["error", "windows"]*/
 //  Import CSS.
 import './editor.scss';
 import './style.scss';
- 
+
+// constants
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; 
 const { 
@@ -12,15 +15,15 @@ const {
 	InnerBlocks,
 	BlockControls,
 	AlignmentToolbar
-} = wp.editor;
+} = wp.blockEditor;
 const { 
 	PanelBody, 
 	IconButton, 
 	RangeControl 
 } = wp.components;
 const ALLOWED_BLOCKS = [ 'core/button' ];
-const validAlignemnts = [ 'full' ];
 
+// register block
 registerBlockType( 'etterem-blocks/intro', {
 	title: __( 'Etterem Intro' ),
 	icon: 'admin-page',
@@ -90,17 +93,33 @@ registerBlockType( 'etterem-blocks/intro', {
 		} = attributes;	
 
 		// functions
-		const onChangeAlign = ( newItem ) => { setAttributes( { alignment: newItem } ) };
-		const onChangeTitle = ( newItem ) => { setAttributes( { title: newItem } ) };
-		const onChangeTitleColor = ( newItem ) => { setAttributes( { titleColor: newItem } ) };
-		const onChangeSubtitle = ( newItem ) => { setAttributes( { subtitle: newItem } ) };
-		const onChangeSubtitleColor = ( newItem ) => { setAttributes( { subtitleColor: newItem } ) };
-		const onSelectImage = ( newItem ) => { setAttributes( { backgroundImage: newItem.sizes.full.url } ) };
-		const onOverlayColorChange = ( newItem ) => { setAttributes( { overlayColor: newItem } ) };
-		const onOverlayOpacityChange = ( newItem ) => { setAttributes( { overlayOpacity: newItem } ) };
+		const onChangeAlign = ( newItem ) => { 
+			setAttributes( { alignment: newItem } ); 
+		};
+		const onChangeTitle = ( newItem ) => { 
+			setAttributes( { title: newItem } ); 
+		};
+		const onChangeTitleColor = ( newItem ) => { 
+			setAttributes( { titleColor: newItem } ); 
+		};
+		const onChangeSubtitle = ( newItem ) => { 
+			setAttributes( { subtitle: newItem } ); 
+		};
+		const onChangeSubtitleColor = ( newItem ) => { 
+			setAttributes( { subtitleColor: newItem } ); 
+		};
+		const onSelectImage = ( newItem ) => {
+			setAttributes( { backgroundImage: newItem.sizes.full.url } ); 
+		};
+		const onOverlayColorChange = ( newItem ) => {
+			setAttributes( { overlayColor: newItem } ); 
+		};
+		const onOverlayOpacityChange = ( newItem ) => {
+			setAttributes( { overlayOpacity: newItem } ); 
+		};
 
 		// return
-		return ([
+		return ( [
 			<InspectorControls style={ { marginBottom: '40px' } }>
 				<PanelBody title={ 'Betuszinek' }>
 					<p><strong>Válasssz színt a Címnek</strong></p>
@@ -123,25 +142,25 @@ registerBlockType( 'etterem-blocks/intro', {
 								onClick={ open }>
 								 Hatterkep
 							</IconButton>
-                        )}/>
-                    <div style={{ marginTop: '20px', marginBottom: '40px' }}>
+                        ) } />
+                    <div style={ { marginTop: '20px', marginBottom: '40px' } }>
                         <p><strong>Atfedo szin:</strong></p>
                         <ColorPalette value={ overlayColor }
                                       onChange={ onOverlayColorChange } />
                     </div>
                     <RangeControl
-                        label={ 'Overlay Opacity' }
+                        label={ 'Atfedes Atlatszosag' }
                         value={ overlayOpacity }
                         onChange={ onOverlayOpacityChange }
                         min={ 0 }
                         max={ 1 }
-                        step={ 0.01 }/>
+                        step={ 0.01 } />
                 </PanelBody>
 			</InspectorControls>,
-			<div className="weart-intro" style={{ 
+			<div className="weart-intro" style={ { 
 				backgroundImage: `url( ${ backgroundImage } )`,
 				textAlign: alignment,
-			}}>
+			} }>
 				{
 					<BlockControls>
 						<AlignmentToolbar value={ alignment } 
@@ -149,7 +168,7 @@ registerBlockType( 'etterem-blocks/intro', {
 						/>
 					</BlockControls>
 				}
-				<div className="weart-intro-overlay" style={{background: overlayColor, opacity: overlayOpacity}}></div>
+				<div className="weart-intro-overlay" style={ { background: overlayColor, opacity: overlayOpacity } }></div>
 				<div className="container">
 					<RichText key="editable"
 						tagName="h4"
@@ -163,10 +182,10 @@ registerBlockType( 'etterem-blocks/intro', {
 						value={ title }
 						onChange={ onChangeTitle }
 						style={ { color: titleColor } }	/>
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
+					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 			</div>,
-		]);
+		] );
 	},
 
 	save: ( { attributes } ) => {
@@ -184,11 +203,11 @@ registerBlockType( 'etterem-blocks/intro', {
 
 		// return
 		return (
-			<div className="weart-intro" style={{ 
+			<div className="weart-intro" style={ { 
 				backgroundImage: `url( ${ backgroundImage } )`,
 				textAlign: alignment,
-			}}>
-				<div className="weart-intro-overlay" style={{background: overlayColor, opacity: overlayOpacity}}></div>
+			} }>
+				<div className="weart-intro-overlay" style={ { background: overlayColor, opacity: overlayOpacity } }></div>
 				<div className="container">
 					<h4 style={ { color: subtitleColor } }>
 						{ subtitle }
@@ -201,6 +220,5 @@ registerBlockType( 'etterem-blocks/intro', {
 			</div>
 		);
 	},
-
 
 } );

@@ -41,3 +41,9 @@
       height: 28px;
       padding: 0;
       outline: none; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
