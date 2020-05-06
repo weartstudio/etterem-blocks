@@ -1,25 +1,28 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable react/jsx-key */
-/*eslint linebreak-style: ["error", "windows"]*/
 //  Import CSS.
 import './editor.scss';
 import './style.scss';
 
-// Import js functions
-const { __ } = wp.i18n;
+// constants
+const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks;
 const {
 	InspectorControls,
-	RichText,
 	ColorPalette,
+	MediaUpload,
 	InnerBlocks,
 } = wp.blockEditor;
 const {
 	PanelBody,
+	IconButton,
 } = wp.components;
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading' ];
 
-// Reguister the block
+// register block
 registerBlockType( 'etterem-blocks/rolunk', {
-	title: __( 'Rólunk' ),
+	title: __( 'Rolunk' ),
 	icon: 'admin-page',
 	category: 'weart',
 	keywords: [
@@ -30,123 +33,83 @@ registerBlockType( 'etterem-blocks/rolunk', {
 
 	// attributes
 	attributes: {
-		title: {
+		sideImage: {
 			type: 'string',
-			source: 'html',
-			selector: 'h2',
+			default: 'https://placeimg.com/600/600/people',
 		},
-		titleColor: {
-			type: 'string',
-			default: 'black',
-		},
-		subtitle: {
-			type: 'string',
-			source: 'html',
-			selector: 'h4',
-		},
-		subtitleColor: {
-			type: 'string',
-			default: 'orange',
-		},
-		imageShadowColor: {
+		sideImageColor: {
 			type: 'string',
 			default: 'blue',
 		},
+		sideImageColorHeight: {
+			type: 'number',
+			default: '100%',
+		},
 	},
 
-	// edit
 	edit: ( { attributes, setAttributes } ) => {
 		// attributes
 		const {
-			title,
-			titleColor,
-			subtitle,
-			subtitleColor,
-			imageShadowColor,
+			sideImage,
+			sideImageColor,
 		} = attributes;
 
 		// functions
-		function onChangeTitle( newItem ) {
-			setAttributes( { title: newItem } );
-		}
-		function onChangeTitleColor( newItem ) {
-			setAttributes( { titleColor: newItem } );
-		}
-		function onChangeSubtitle( newItem ) {
-			setAttributes( { subtitle: newItem } );
-		}
-		function onChangeSubtitleColor( newItem ) {
-			setAttributes( { subtitleColor: newItem } );
-		}
-		function onChangeImageShadowColor( newItem ) {
-			setAttributes( { imageShadowColor: newItem } );
-		}
+		const onSelectImage = ( newItem ) => {
+			setAttributes( { sideImage: newItem.sizes.full.url } );
+		};
+		const onsideImageColorChange = ( newItem ) => {
+			setAttributes( { sideImageColor: newItem } );
+		};
 
-		// render
+		// return
 		return ( [
 			<InspectorControls>
-				<PanelBody title={ 'Színek' } >
-					<p><strong>Cím színe:</strong></p>
-					<ColorPalette value={ titleColor } onChange={ onChangeTitleColor } />
-					<p><strong>Alcím színe:</strong></p>
-					<ColorPalette value={ titleColor } onChange={ onChangeSubtitleColor } />
-					<ColorPalette value={ imageShadowColor } onChange={ onChangeImageShadowColor } />
+				<PanelBody title={ 'Beállítások' }>
+					<p><strong>Kép háttérszín:</strong></p>
+					<ColorPalette value={ sideImageColor } onChange={ onsideImageColorChange } />
 				</PanelBody>
 			</InspectorControls>,
 			<div className="weart-rolunk">
-				<div className="container">
-					<div className="text">
-						<RichText key="editable"
-							tagName="h4"
-							placeholder="Kis Cím Szövege"
-							value={ subtitle }
-							onChange={ onChangeSubtitle }
-							style={ { color: subtitleColor } }	/>
-						<RichText key="editable"
-							tagName="h2"
-							placeholder="Nagy Cím Szövege"
-							value={ title }
-							onChange={ onChangeTitle }
-							style={ { color: titleColor } }	/>
-						<InnerBlocks allowedBlocks={ 'core/paragraph' } />
-					</div>
-					<div className="image">
-						<InnerBlocks allowedBlocks={ 'core/image' } />
-						<div className="shadow" style={ { backgroundColor: imageShadowColor } }></div>
-					</div>
+				<div className="text">
+					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				</div>
+				<div className="image">
+					<img src={ sideImage } alt="" />
+					<MediaUpload
+						onSelect={ onSelectImage }
+						type="image"
+						value={ sideImage }
+						render={ ( { open } ) => (
+							<IconButton
+								className="editor-media-placeholder__button is-button is-default is-large"
+								icon="upload"
+								onClick={ open }>
+								Kép feltöltése
+							</IconButton>
+						) } />
+					<div className="rolunk-shadow" style={ { background: sideImageColor } }></div>
 				</div>
 			</div>,
 		] );
 	},
 
-	// save
 	save: ( { attributes } ) => {
 		// attributes
 		const {
-			title,
-			titleColor,
-			subtitle,
-			subtitleColor,
-			imageShadowColor,
+			sideImage,
+			sideImageColor,
 		} = attributes;
 
-		// render
+		// return
 		return (
 			<div className="weart-rolunk">
-				<div className="container">
-					<div className="text">
-						<h4 style={ { color: subtitleColor } }>
-							{ subtitle }
-						</h4>
-						<h2 style={ { color: titleColor } }>
-							{ title }
-						</h2>
-						<InnerBlocks.Content />
-					</div>
-					<div className="image">
-						<InnerBlocks.Content />
-						<div className="shadow" style={ { backgroundColor: imageShadowColor } }></div>
-					</div>
+				<div className="text">
+					<InnerBlocks.Content />
+				</div>
+				<div className="image">
+					<img src={ sideImage } alt="" />
+					<div className="rolunk-shadow" style={ { background: sideImageColor } }></div>
 				</div>
 			</div>
 		);

@@ -5,11 +5,16 @@
  * which makes it higher in priority.
  */
 
-.wp-block-cgb-block-etterem  {
-  background: $green;
-  border: 0.2rem solid $black;
-  color: $black;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem;
+.weart-intro  {
+  .components-button{
+    width: 28px;
+    height: 28px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+    border-radius: 50%;
+    padding: 0px;
+    outline: none;
+  }
 }

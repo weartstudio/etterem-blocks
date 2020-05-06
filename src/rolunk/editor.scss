@@ -1,0 +1,28 @@
+.weart-rolunk{
+	// add button block
+    .block-list-appender{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		span{ display: none;}
+		button{
+		  border: 1px solid white;
+		  border-radius: 50%;
+		  width: 28px;
+		  height: 28px;
+		  padding: 0;
+		  outline: none;
+		}
+	  }
+	// end
+
+	// components-button
+	.components-button{
+		z-index: 10;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background: white;
+	}
+}

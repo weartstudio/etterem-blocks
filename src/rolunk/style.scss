@@ -1,0 +1,24 @@
+.weart-rolunk{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 1.5rem;
+	align-items: center;
+	margin-bottom: 3rem;
+	.image{
+		position: relative;
+		img{
+			display: block;
+			max-width: 100%;
+			height: auto;
+			width: auto;
+			position: relative;
+			z-index: 1;
+		}
+		.rolunk-shadow{
+			width: 90%;
+			height: 30px;
+			margin: 0 auto;
+
+		}
+	}
+}
