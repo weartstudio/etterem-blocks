@@ -54,3 +54,9 @@
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background: white; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/

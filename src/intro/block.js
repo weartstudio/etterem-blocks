@@ -19,7 +19,7 @@ const {
 	IconButton,
 	RangeControl,
 } = wp.components;
-const ALLOWED_BLOCKS = [ 'core/button' ];
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph' ];
 
 registerBlockType( 'etterem-blocks/intro', {
 	title: __( 'Etterem Intro' ),

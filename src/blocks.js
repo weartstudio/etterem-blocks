@@ -11,3 +11,4 @@
 
 import './intro/block.js';
 import './rolunk/block.js';
+import './szolgaltatas/block.js';
