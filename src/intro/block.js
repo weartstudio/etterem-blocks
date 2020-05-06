@@ -22,7 +22,7 @@ const {
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph' ];
 
 registerBlockType( 'etterem-blocks/intro', {
-	title: __( 'Etterem Intro' ),
+	title: __( 'Bevezető' ),
 	icon: 'admin-page',
 	category: 'weart',
 	keywords: [
@@ -137,16 +137,16 @@ registerBlockType( 'etterem-blocks/intro', {
 								className="editor-media-placeholder__button is-button is-default is-large"
 								icon="upload"
 								onClick={ open }>
-								Hatterkep
+								Háttérkép
 							</IconButton>
 						) } />
 					<div style={ { marginTop: '20px', marginBottom: '40px' } }>
-						<p><strong>Atfedo szin:</strong></p>
+						<p><strong>Átfedő szín:</strong></p>
 						<ColorPalette value={ overlayColor }
 							onChange={ onOverlayColorChange } />
 					</div>
 					<RangeControl
-						label={ 'Overlay Opacity' }
+						label={ 'Átfedés mértéke:' }
 						value={ overlayOpacity }
 						onChange={ onOverlayOpacityChange }
 						min={ 0 }

@@ -9,6 +9,7 @@ import './style.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks;
 const {
+	RichText,
 	InspectorControls,
 	ColorPalette,
 	MediaUpload,
@@ -18,11 +19,11 @@ const {
 	PanelBody,
 	IconButton,
 } = wp.components;
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading' ];
+const ALLOWED_BLOCKS = [ 'core/button' ];
 
 // register block
 registerBlockType( 'etterem-blocks/rolunk', {
-	title: __( 'Rolunk' ),
+	title: __( 'Rólunk' ),
 	icon: 'admin-page',
 	category: 'weart',
 	keywords: [
@@ -45,6 +46,21 @@ registerBlockType( 'etterem-blocks/rolunk', {
 			type: 'number',
 			default: '100%',
 		},
+		subtitle: {
+			type: 'sting',
+			source: 'html',
+			slector: 'h4',
+		},
+		title: {
+			type: 'sting',
+			source: 'html',
+			slector: 'h2',
+		},
+		body: {
+			type: 'sting',
+			source: 'html',
+			slector: 'p',
+		},
 	},
 
 	edit: ( { attributes, setAttributes } ) => {
@@ -52,6 +68,9 @@ registerBlockType( 'etterem-blocks/rolunk', {
 		const {
 			sideImage,
 			sideImageColor,
+			subtitle,
+			title,
+			body,
 		} = attributes;
 
 		// functions
@@ -60,6 +79,15 @@ registerBlockType( 'etterem-blocks/rolunk', {
 		};
 		const onsideImageColorChange = ( newItem ) => {
 			setAttributes( { sideImageColor: newItem } );
+		};
+		const onChangeSubtitle = ( newItem ) => {
+			setAttributes( { subtitle: newItem } );
+		};
+		const onChangeTitle = ( newItem ) => {
+			setAttributes( { title: newItem } );
+		};
+		const onChangeBody = ( newItem ) => {
+			setAttributes( { title: newItem } );
 		};
 
 		// return
@@ -72,6 +100,21 @@ registerBlockType( 'etterem-blocks/rolunk', {
 			</InspectorControls>,
 			<div className="weart-rolunk">
 				<div className="text">
+					<RichText key="editable"
+						tagName="h4"
+						placeholder="Alcím"
+						value={ subtitle }
+						onChange={ onChangeSubtitle } />
+					<RichText key="editable"
+						tagName="h2"
+						placeholder="Cím"
+						value={ title }
+						onChange={ onChangeTitle } />
+					<RichText key="editable"
+						tagName="p"
+						placeholder="Szöveg"
+						value={ body }
+						onChange={ onChangeBody } />
 					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 				<div className="image">
@@ -99,12 +142,18 @@ registerBlockType( 'etterem-blocks/rolunk', {
 		const {
 			sideImage,
 			sideImageColor,
+			subtitle,
+			title,
+			body,
 		} = attributes;
 
 		// return
 		return (
 			<div className="weart-rolunk">
 				<div className="text">
+					<h4>{ subtitle }</h4>
+					<h2>{ title }</h2>
+					<p>{ body }</p>
 					<InnerBlocks.Content />
 				</div>
 				<div className="image">
