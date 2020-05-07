@@ -4,6 +4,13 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 /**
  * #.# Styles
  *
@@ -36,6 +43,13 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 .weart-rolunk {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -62,6 +76,13 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 .weart-szolgaltatas {
   text-align: center;
   padding: 1rem;
@@ -83,6 +104,13 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 .weart-sef-ajanlata {
   display: -ms-flexbox;
   display: flex; }

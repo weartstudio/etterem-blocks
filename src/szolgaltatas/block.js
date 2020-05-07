@@ -58,7 +58,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 		body: {
 			type: 'string',
 			source: 'html',
-			selector: 'h3',
+			selector: 'p',
 		},
 	},
 
@@ -105,7 +105,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 					<ColorPalette value={ border } onChange={ onChangeBorder } />
 				</PanelBody>
 			</InspectorControls>,
-			<div className="weart-szolgaltatas" style={ { borderColor: border } }>
+			<div className="weart-blocks weart-szolgaltatas" style={ { borderColor: border } }>
 				<div className="inner" style={ { background: bg, borderColor: edge } }>
 					<div className="image">
 						<img src={ image } alt="" />
@@ -124,7 +124,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 					</div>
 					<div className="text">
 						<RichText key="editable"
-							tagName="h2"
+							tagName="h3"
 							placeholder="Cím"
 							value={ title }
 							onChange={ onChangeTitle } />
@@ -153,7 +153,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 
 		// return
 		return (
-			<div className="weart-szolgaltatas" style={ { borderColor: border } }>
+			<div className="weart-blocks weart-szolgaltatas" style={ { borderColor: border } }>
 				<div className="inner" style={ { background: bg, borderColor: edge } }>
 					<div className="image">
 						<img src={ image } alt="" />

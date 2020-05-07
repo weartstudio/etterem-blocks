@@ -11,3 +11,17 @@ $white: #f4f4f4;
 $gray: #dedede;
 $green: #bada55;
 $red: orangered;
+
+// appender button
+.weart-blocks{
+	.block-editor-inner-blocks{
+		button.block-editor-button-block-appender{
+			border: 1px solid white;
+			// border-radius: 50%;
+			width: 40px;
+			height: 28px;
+			padding: 0;
+			outline: none;
+		}
+	}
+}

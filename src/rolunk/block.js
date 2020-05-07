@@ -98,7 +98,7 @@ registerBlockType( 'etterem-blocks/rolunk', {
 					<ColorPalette value={ sideImageColor } onChange={ onsideImageColorChange } />
 				</PanelBody>
 			</InspectorControls>,
-			<div className="weart-rolunk">
+			<div className="weart-blocks weart-rolunk">
 				<div className="text">
 					<RichText key="editable"
 						tagName="h4"
@@ -149,7 +149,7 @@ registerBlockType( 'etterem-blocks/rolunk', {
 
 		// return
 		return (
-			<div className="weart-rolunk">
+			<div className="weart-blocks weart-rolunk">
 				<div className="text">
 					<h4>
 						{ subtitle }

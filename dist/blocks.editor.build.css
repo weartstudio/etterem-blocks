@@ -4,30 +4,32 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 /**
  * #.# Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.weart-intro .components-button {
-  width: 28px;
-  height: 28px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: white;
-  -webkit-border-image: initial;
-       -o-border-image: initial;
-          border-image: initial;
-  border-radius: 50%;
-  padding: 0px;
-  outline: none; }
 /**
  * #.# Common SCSS
  *
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
+
 .weart-rolunk .block-list-appender {
   display: -ms-flexbox;
   display: flex;
@@ -44,25 +46,27 @@
     height: 28px;
     padding: 0;
     outline: none; }
-
-.weart-rolunk .components-button {
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background: white; }
 /**
  * #.# Common SCSS
  *
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }
 /**
  * #.# Common SCSS
  *
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  outline: none; }

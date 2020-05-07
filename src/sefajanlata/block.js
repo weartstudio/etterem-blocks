@@ -97,7 +97,7 @@ registerBlockType( 'etterem-blocks/sef-ajanlata', {
 					/>
 				</PanelBody>
 			</InspectorControls>,
-			<div className="weart-sef-ajanlata" style={ { flexDirection: dir } }>
+			<div className="weart-blocks weart-sef-ajanlata" style={ { flexDirection: dir } }>
 				<div className="image">
 					<img src={ attributes.image } alt="" />
 					<MediaUpload
@@ -145,7 +145,7 @@ registerBlockType( 'etterem-blocks/sef-ajanlata', {
 
 		// return
 		return (
-			<div className="weart-sef-ajanlata" style={ { flexDirection: dir } }>
+			<div className="weart-blocks weart-sef-ajanlata" style={ { flexDirection: dir } }>
 				<div className="image">
 					<img src={ attributes.image } alt="" />
 				</div>

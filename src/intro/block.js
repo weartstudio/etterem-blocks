@@ -154,7 +154,7 @@ registerBlockType( 'etterem-blocks/intro', {
 						step={ 0.01 } />
 				</PanelBody>
 			</InspectorControls>,
-			<div className="weart-intro" style={ {
+			<div className="weart-blocks weart-intro" style={ {
 				backgroundImage: `url( ${ backgroundImage } )`,
 				textAlign: alignment,
 			} }>
@@ -200,7 +200,7 @@ registerBlockType( 'etterem-blocks/intro', {
 
 		// return
 		return (
-			<div className="weart-intro" style={ {
+			<div className="weart-blocks weart-intro" style={ {
 				backgroundImage: `url( ${ backgroundImage } )`,
 				textAlign: alignment,
 			} } >
