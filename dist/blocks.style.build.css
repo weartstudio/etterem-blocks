@@ -77,3 +77,17 @@
     text-transform: uppercase; }
   .weart-szolgaltatas .image {
     display: inline-block; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.weart-sef-ajanlata {
+  display: -ms-flexbox;
+  display: flex; }
+  .weart-sef-ajanlata .text {
+    text-align: center;
+    margin: 2rem 0; }
+    .weart-sef-ajanlata .text h3 {
+      font-size: 26px; }

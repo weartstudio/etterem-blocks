@@ -11,40 +11,38 @@ const { registerBlockType } = wp.blocks;
 const {
 	RichText,
 	InspectorControls,
-	ColorPalette,
 	MediaUpload,
 	InnerBlocks,
 } = wp.blockEditor;
 const {
 	PanelBody,
 	IconButton,
+	ToggleControl,
 } = wp.components;
 const ALLOWED_BLOCKS = [ 'core/button' ];
 
 // register block
-registerBlockType( 'etterem-blocks/rolunk', {
-	title: __( 'Rólunk' ),
+registerBlockType( 'etterem-blocks/sef-ajanlata', {
+	title: __( 'Séf Ajánlata' ),
 	icon: 'admin-page',
 	category: 'weart',
 	keywords: [
 		__( 'etterem' ),
-		__( 'rolunk' ),
+		__( 'sef' ),
+		__( 'ajanlat' ),
+		__( 'szezonalis' ),
 		__( 'weart' ),
 	],
 
 	// attributes
 	attributes: {
-		sideImage: {
+		image: {
 			type: 'string',
-			default: 'https://placeimg.com/600/600/people',
+			default: 'https://placeimg.com/600/600/',
 		},
-		sideImageColor: {
-			type: 'string',
-			default: 'blue',
-		},
-		sideImageColorHeight: {
-			type: 'number',
-			default: '100%',
+		direction: {
+			type: 'boolean',
+			default: true,
 		},
 		subtitle: {
 			type: 'string',
@@ -54,7 +52,7 @@ registerBlockType( 'etterem-blocks/rolunk', {
 		title: {
 			type: 'string',
 			source: 'html',
-			selector: 'h2',
+			selector: 'h3',
 		},
 		body: {
 			type: 'string',
@@ -64,21 +62,9 @@ registerBlockType( 'etterem-blocks/rolunk', {
 	},
 
 	edit: ( { attributes, setAttributes } ) => {
-		// attributes
-		const {
-			sideImage,
-			sideImageColor,
-			subtitle,
-			title,
-			body,
-		} = attributes;
-
 		// functions
 		const onSelectImage = ( newItem ) => {
-			setAttributes( { sideImage: newItem.sizes.full.url } );
-		};
-		const onsideImageColorChange = ( newItem ) => {
-			setAttributes( { sideImageColor: newItem } );
+			setAttributes( { image: newItem.sizes.full.url } );
 		};
 		const onChangeSubtitle = ( newItem ) => {
 			setAttributes( { subtitle: newItem } );
@@ -90,39 +76,34 @@ registerBlockType( 'etterem-blocks/rolunk', {
 			setAttributes( { body: newItem } );
 		};
 
+		let dir = 'column';
+		if ( ! attributes.direction ) {
+			dir = 'column-reverse';
+		} else {
+			dir = 'column';
+		}
+
 		// return
 		return ( [
 			<InspectorControls>
 				<PanelBody title={ 'Beállítások' }>
-					<p><strong>Kép háttérszín:</strong></p>
-					<ColorPalette value={ sideImageColor } onChange={ onsideImageColorChange } />
+					<ToggleControl
+						label="Irány"
+						help={ attributes.direction ? 'Kép felül' : 'Kép alul' }
+						checked={ attributes.direction }
+						onChange={ ( value ) => {
+							setAttributes( { direction: value } );
+						} }
+					/>
 				</PanelBody>
 			</InspectorControls>,
-			<div className="weart-rolunk">
-				<div className="text">
-					<RichText key="editable"
-						tagName="h4"
-						placeholder="Alcím"
-						value={ subtitle }
-						onChange={ onChangeSubtitle } />
-					<RichText key="editable"
-						tagName="h2"
-						placeholder="Cím"
-						value={ title }
-						onChange={ onChangeTitle } />
-					<RichText key="editable"
-						tagName="p"
-						placeholder="Szöveg"
-						value={ body }
-						onChange={ onChangeBody } />
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
-				</div>
+			<div className="weart-sef-ajanlata" style={ { flexDirection: dir } }>
 				<div className="image">
-					<img src={ sideImage } alt="" />
+					<img src={ attributes.image } alt="" />
 					<MediaUpload
 						onSelect={ onSelectImage }
 						type="image"
-						value={ sideImage }
+						value={ attributes.image }
 						render={ ( { open } ) => (
 							<IconButton
 								className="editor-media-placeholder__button is-button is-default is-large"
@@ -131,38 +112,48 @@ registerBlockType( 'etterem-blocks/rolunk', {
 								Kép feltöltése
 							</IconButton>
 						) } />
-					<div className="rolunk-shadow" style={ { background: sideImageColor } }></div>
+				</div>
+				<div className="text">
+					<RichText key="editable"
+						tagName="h4"
+						placeholder="Alcím"
+						value={ attributes.subtitle }
+						onChange={ onChangeSubtitle } />
+					<RichText key="editable"
+						tagName="h3"
+						placeholder="Cím"
+						value={ attributes.title }
+						onChange={ onChangeTitle } />
+					<RichText key="editable"
+						tagName="p"
+						placeholder="Szöveg"
+						value={ attributes.body }
+						onChange={ onChangeBody } />
+					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 			</div>,
 		] );
 	},
 
 	save: ( { attributes } ) => {
-		// attributes
-		const {
-			sideImage,
-			sideImageColor,
-			subtitle,
-			title,
-			body,
-		} = attributes;
+		let dir = 'column';
+		if ( ! attributes.direction ) {
+			dir = 'column-reverse';
+		} else {
+			dir = 'column';
+		}
 
 		// return
 		return (
-			<div className="weart-rolunk">
-				<div className="text">
-					<h4>
-						{ subtitle }
-					</h4>
-					<h2>
-						{ title }
-					</h2>
-					<RichText.Content tagName="p" value={ body } />
-					<InnerBlocks.Content />
-				</div>
+			<div className="weart-sef-ajanlata" style={ { flexDirection: dir } }>
 				<div className="image">
-					<img src={ sideImage } alt="" />
-					<div className="rolunk-shadow" style={ { background: sideImageColor } }></div>
+					<img src={ attributes.image } alt="" />
+				</div>
+				<div className="text">
+					<h4>{ attributes.subtitle }</h4>
+					<h3>{ attributes.title }</h3>
+					<RichText.Content tagName="p" value={ attributes.body } />
+					<InnerBlocks.Content />
 				</div>
 			</div>
 		);

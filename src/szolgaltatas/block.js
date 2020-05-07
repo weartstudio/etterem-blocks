@@ -19,6 +19,7 @@ const {
 	PanelBody,
 	IconButton,
 } = wp.components;
+const ALLOWED_BLOCKS = [ 'core/button' ];
 
 // register block
 registerBlockType( 'etterem-blocks/szolgaltatas', {
@@ -57,7 +58,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 		body: {
 			type: 'string',
 			source: 'html',
-			selector: 'p',
+			selector: 'h3',
 		},
 	},
 
@@ -132,6 +133,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 							placeholder="Szöveg"
 							value={ body }
 							onChange={ onChangeBody } />
+						<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
 			</div>,
@@ -158,7 +160,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 					</div>
 					<div className="text">
 						<h3>{ title }</h3>
-						<RichText.Content tagName="p" value={ body }/>
+						<RichText.Content tagName="p" value={ body } />
 						<InnerBlocks.Content />
 					</div>
 				</div>
