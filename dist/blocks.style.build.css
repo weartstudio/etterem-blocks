@@ -6,10 +6,11 @@
 */
 .weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
   border: 1px solid white;
-  width: 40px;
+  width: 50px;
   height: 28px;
   padding: 0;
-  outline: none; }
+  outline: none;
+  margin: 10px auto; }
 
 /**
  * #.# Styles
@@ -45,10 +46,11 @@
 */
 .weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
   border: 1px solid white;
-  width: 40px;
+  width: 50px;
   height: 28px;
   padding: 0;
-  outline: none; }
+  outline: none;
+  margin: 10px auto; }
 
 .weart-rolunk {
   display: grid;
@@ -78,10 +80,11 @@
 */
 .weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
   border: 1px solid white;
-  width: 40px;
+  width: 50px;
   height: 28px;
   padding: 0;
-  outline: none; }
+  outline: none;
+  margin: 10px auto; }
 
 .weart-szolgaltatas {
   text-align: center;
@@ -95,7 +98,9 @@
   .weart-szolgaltatas h3 {
     font-size: 16px;
     margin: 16px 0;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-family: var(--f-text);
+    letter-spacing: 1px; }
   .weart-szolgaltatas .image {
     display: inline-block; }
 /**
@@ -106,10 +111,11 @@
 */
 .weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
   border: 1px solid white;
-  width: 40px;
+  width: 50px;
   height: 28px;
   padding: 0;
-  outline: none; }
+  outline: none;
+  margin: 10px auto; }
 
 .weart-sef-ajanlata {
   display: -ms-flexbox;
@@ -119,3 +125,22 @@
     margin: 2rem 0; }
     .weart-sef-ajanlata .text h3 {
       font-size: 26px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 50px;
+  height: 28px;
+  padding: 0;
+  outline: none;
+  margin: 10px auto; }
+
+.weart-section {
+  margin: 20vh 0; }
+  .weart-section .wp-block-columns {
+    margin-top: 3rem;
+    margin-bottom: 3rem; }

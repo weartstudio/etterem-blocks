@@ -6,11 +6,10 @@
 */
 
 // Colors.
-$black: rgb(41, 41, 41);
-$white: #f4f4f4;
-$gray: #dedede;
-$green: #bada55;
-$red: orangered;
+$c-1: var(--c-1);
+$c-2: var(--c-2);
+$f-title: var(--f-title);
+$f-text: var(--f-text);
 
 // appender button
 .weart-blocks{
@@ -18,10 +17,11 @@ $red: orangered;
 		button.block-editor-button-block-appender{
 			border: 1px solid white;
 			// border-radius: 50%;
-			width: 40px;
+			width: 50px;
 			height: 28px;
 			padding: 0;
 			outline: none;
+			margin: 10px auto;
 		}
 	}
 }
