@@ -29,23 +29,6 @@
   height: 28px;
   padding: 0;
   outline: none; }
-
-.weart-rolunk .block-list-appender {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center; }
-  .weart-rolunk .block-list-appender span {
-    display: none; }
-  .weart-rolunk .block-list-appender button {
-    border: 1px solid white;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    outline: none; }
 /**
  * #.# Common SCSS
  *
