@@ -88,3 +88,21 @@ h4 {
   padding: 0;
   outline: none;
   margin: 10px auto; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.weart-blocks .block-editor-inner-blocks button.block-editor-button-block-appender {
+  border: 1px solid white;
+  width: 50px;
+  height: 28px;
+  padding: 0;
+  outline: none;
+  margin: 10px auto; }
+
+.weart-blog .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%; }

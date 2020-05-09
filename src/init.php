@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 2. blocks.build.js - Backend.
  * 3. blocks.editor.build.css - Backend.
  */
-function etterem_cgb_block_assets() { 
+function etterem_cgb_block_assets() {
 	// Register block styles for both frontend + backend.
 	wp_register_style(
 		'etterem-cgb-style-css', // Handle.
@@ -61,6 +61,8 @@ function etterem_cgb_block_assets() {
 			'editor_script' => 'etterem-cgb-block-js',
 			// Enqueue blocks.editor.build.css in the editor only.
 			'editor_style'  => 'etterem-cgb-block-editor-css',
+			// render with
+			'render_callback' => 'render_weart_blog_block'
 		)
 	);
 }
@@ -79,3 +81,5 @@ function weart_create_block_category( $categories, $post ) {
 	);
 }
 add_filter( 'block_categories', 'weart_create_block_category', 10, 2);
+
+// include( plugin_dir_path(__FILE__).'blog/block.php' );
