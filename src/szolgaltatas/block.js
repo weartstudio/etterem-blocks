@@ -43,12 +43,12 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 			default: '#f5f5f5',
 		},
 		edge: {
-			type: 'number',
+			type: 'string',
 			default: '#f5f5f5',
 		},
 		border: {
-			type: 'number',
-			default: '#f6f7f8',
+			type: 'string',
+			default: 'navy',
 		},
 		title: {
 			type: 'string',
@@ -141,26 +141,17 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 	},
 
 	save: ( { attributes } ) => {
-		// attributes
-		const {
-			image,
-			title,
-			body,
-			border,
-			bg,
-			edge,
-		} = attributes;
 
 		// return
 		return (
-			<div className="weart-blocks weart-szolgaltatas" style={ { borderColor: border } }>
-				<div className="inner" style={ { background: bg, borderColor: edge } }>
+			<div className="weart-blocks weart-szolgaltatas" style={ { borderColor: attributes.border } }>
+				<div className="inner" style={ { background: attributes.bg, borderColor: attributes.edge } }>
 					<div className="image">
-						<img src={ image } alt="" />
+						<img src={ attributes.image } alt="" />
 					</div>
 					<div className="text">
-						<h3>{ title }</h3>
-						<RichText.Content tagName="p" value={ body } />
+						<h3>{ attributes.title }</h3>
+						<RichText.Content tagName="p" value={ attributes.body } />
 						<InnerBlocks.Content />
 					</div>
 				</div>

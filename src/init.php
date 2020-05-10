@@ -119,8 +119,8 @@ function render_weart_blog_block( $attributes ) {
 			<h4>%1$s</h4>
 			<h2>%2$s</h2>
 		</div>',
-		$$attributes[ 'subtitle' ],
-        $$attributes[ 'title' ]
+		$attributes[ 'subtitle' ],
+        $attributes[ 'title' ]
     );
 
     // Put together markup for each post to output
@@ -144,7 +144,7 @@ function render_weart_blog_block( $attributes ) {
 
     // Built out our final output
     $block_content = sprintf(
-		'<div class="weart-blog">
+		'<div class="weart-blocks weart-blog">
 			%1$s
 			<div class="grid">
 				%2$s

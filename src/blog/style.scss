@@ -1,0 +1,11 @@
+.weart-blog{
+	.grid{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 2rem;
+		.item{
+			background: white;
+			h2{ font-size: 2rem; }
+		}
+	}
+}

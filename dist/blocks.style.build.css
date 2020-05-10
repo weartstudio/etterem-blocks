@@ -157,3 +157,12 @@
   padding: 0;
   outline: none;
   margin: 10px auto; }
+
+.weart-blog .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem; }
+  .weart-blog .grid .item {
+    background: white; }
+    .weart-blog .grid .item h2 {
+      font-size: 2rem; }
