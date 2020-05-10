@@ -13,5 +13,5 @@ import './intro/block.js';
 import './rolunk/block.js';
 import './szolgaltatas/block.js';
 import './sefajanlata/block.js';
-import './three/block.js';
+import './szekcio/block.js';
 import './blog/block.js';

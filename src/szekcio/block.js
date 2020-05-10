@@ -15,13 +15,6 @@ const {
 	PanelBody,
 	IconButton,
 } = wp.components;
-const ALLOWED_BLOCKS = [
-	'core/columns',
-	'core/button',
-	'core/gallery',
-	'core/paragraph',
-	'core/heading',
-];
 const MY_TEMPLATE = [
 	[ 'core/heading', { placeholder: 'Alcím', level: 4  } ],
 	[ 'core/heading', { placeholder: 'Cím' } ],
@@ -80,8 +73,7 @@ registerBlockType( 'etterem-blocks/three', {
 			} }>
 				<div className="container">
 					<InnerBlocks
-						template={ MY_TEMPLATE }
-						allowedBlocks={ ALLOWED_BLOCKS } />
+						template={ MY_TEMPLATE } />
 				</div>
 			</div>,
 		] );
