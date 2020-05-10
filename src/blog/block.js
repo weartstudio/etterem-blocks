@@ -11,7 +11,12 @@ const {
 	Spinner,
 	SelectControl,
 	TextControl,
+	PanelBody,
 } = wp.components;
+const {
+	RichText,
+	InspectorControls,
+} = wp.blockEditor;
 
 registerBlockType( 'etterem-blocks/blog', {
 	title: __( 'Blog' ),
@@ -23,15 +28,18 @@ registerBlockType( 'etterem-blocks/blog', {
 		__( 'weart' ),
 	],
 	attributes: {
+		title: {
+			type: 'string',
+		},
+		subtitle: {
+			type: 'string',
+		},
 		categories: {
 			type: 'object',
 		},
 		selectedCategory: {
 			type: 'string',
 		},
-		postsPerPage: {
-			type: 'string',
-		}
 	},
 
 	edit: ( { attributes, setAttributes } ) => {
@@ -66,31 +74,45 @@ registerBlockType( 'etterem-blocks/blog', {
 			} );
 		}
 
-		// ellenőrzés
-		console.log( attributes.categories );
-
 		// return
-		return (
-			<div className="weart-blog" style={ { display: 'flex' } }>
+		return ( [
+			<InspectorControls>
+				<PanelBody title="Beállítások">
+					<TextControl
+						value={ attributes.subtitle }
+						onChange={ ( e ) => { setAttributes( { subtitle: e } ); } }
+					/>
+					<TextControl
+						value={ attributes.title }
+						onChange={ ( e ) => { setAttributes( { title: e } ); } }
+					/>
+					<SelectControl
+						label="Válassz kategóriát"
+						value={ attributes.selectedCategory }
+						onChange={ ( e ) => { setAttributes( { selectedCategory: e } ); } }
+						options={ categoriesList }
+					/>
+				</PanelBody>
+			</InspectorControls>,
+			<div className="weart-blog">
+				<h4>{ attributes.subtitle }</h4>
+				<h2>{ attributes.title }</h2>
 				<div className="grid">
-					<div>
-						<SelectControl
-							label="Válassz kategóriát"
-							value={ attributes.selectedCategory }
-							onChange={ ( e ) => { setAttributes( { selectedCategory: e } ); } }
-							options={ categoriesList }
-						/>
+					<div className="item">
+						<h2>Cikkcím</h2>
+						<p>Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. </p>
 					</div>
-					<div>
-						<TextControl
-							label="Mennyit jelenítsen meg?"
-							onChange={ ( e ) => { setAttributes( { postsPerPage: e } ); } }
-							value={ attributes.postsPerPage }
-						/>
+					<div className="item">
+						<h2>Cikkcím</h2>
+						<p>Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. </p>
+					</div>
+					<div className="item">
+						<h2>Cikkcím</h2>
+						<p>Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. </p>
 					</div>
 				</div>
-			</div>
-		);
+			</div>,
+		] );
 	},
 
 	save: () => {

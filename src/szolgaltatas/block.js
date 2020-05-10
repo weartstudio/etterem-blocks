@@ -48,7 +48,7 @@ registerBlockType( 'etterem-blocks/szolgaltatas', {
 		},
 		border: {
 			type: 'number',
-			default: 'navy',
+			default: '#f6f7f8',
 		},
 		title: {
 			type: 'string',

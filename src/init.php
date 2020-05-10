@@ -65,6 +65,25 @@ function etterem_cgb_block_assets() {
 			'render_callback' => 'render_weart_blog_block'
 		)
 	);
+
+	// server side rendered block register
+	register_block_type(
+        'etterem-blocks/blog',
+        array(
+            'attributes' => array(
+                'selectedCategory' => array(
+                    'type' => 'string',
+                ),
+                'title' => array(
+                    'type' => 'string',
+                ),
+                'subtitle' => array(
+                    'type' => 'string',
+                ),
+            ),
+            'render_callback' => 'render_weart_blog_block',
+        )
+    );
 }
 add_action( 'init', 'etterem_cgb_block_assets' );
 
@@ -82,4 +101,58 @@ function weart_create_block_category( $categories, $post ) {
 }
 add_filter( 'block_categories', 'weart_create_block_category', 10, 2);
 
+
 // include( plugin_dir_path(__FILE__).'blog/block.php' );
+// server side rendering
+function render_weart_blog_block( $attributes ) {
+    // get our 3 most recent posts using wp_get_recent_posts
+    $recent_posts = wp_get_recent_posts(
+        array(
+			'numberposts' => 3,
+			'category' => $attributes[ 'selectedCategory' ],
+            'post_stats'  => 'publish',
+        )
+    );
+
+	$title_of_block = sprintf(
+		'<div class="title_of_block">
+			<h4>%1$s</h4>
+			<h2>%2$s</h2>
+		</div>',
+		$$attributes[ 'subtitle' ],
+        $$attributes[ 'title' ]
+    );
+
+    // Put together markup for each post to output
+    foreach ( $recent_posts as $post ) {
+        $post_id = $post['ID'];
+
+        $list_item_markup .= sprintf(
+			'<div class="item">
+				<h2 class="title">
+					<a href="%1$s">%2$s</a>
+				</h2>
+				<div class="excerpt">
+					%3$s
+				</div>
+			</div>',
+            esc_url( get_permalink( $post_id ) ), /* link */
+            esc_html( get_the_title( $post_id ) ), /* title */
+            esc_html( get_the_excerpt( $post_id ) ) /* excerpt */
+        );
+    }
+
+    // Built out our final output
+    $block_content = sprintf(
+		'<div class="weart-blog">
+			%1$s
+			<div class="grid">
+				%2$s
+			</div>
+		</div>',
+		$title_of_block,
+        $list_item_markup
+    );
+
+    return $block_content;
+}
